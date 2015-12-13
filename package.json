@@ -1,0 +1,22 @@
+{
+  "name": "wdi-project-one",
+  "version": "0.1.0",
+  "description": "Project One for GA WDI",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node --verbose spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dydx/project_one.git"
+  },
+  "author": "Joshua Sandlin <josh@thenullbyte.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dydx/project_one/issues"
+  },
+  "homepage": "https://github.com/dydx/project_one#readme",
+  "dependencies": {
+    "node-bourbon": "^4.2.3"
+  }
+}
