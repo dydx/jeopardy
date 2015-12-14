@@ -1,5 +1,8 @@
 'use strict'
 
+require('lovefield')
+require('./database.js')
+
 class Card {
   constructor(category, number) {
     this.category = category
