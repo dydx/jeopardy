@@ -3,6 +3,57 @@
 var score = 0
 
 // is there a way to extract a few objects out of this and compose them together?
+// also, auto incrementing these fields?
+
+class Question {
+  constructor (text, value, answer) {
+    this.text = text
+    this.value = value
+    this.answer = answer
+  }
+
+  checkAnswer(answer) {
+    return answer == this.answer
+  }
+}
+
+class Category {
+  constructor(name) {
+    this.name = name
+    this.questions = []
+  }
+
+  addQuestion (question) {
+    this.questions.push(question)
+  }
+}
+
+class Game {
+  constructor () {
+    this.categories = []
+  }
+
+  addCategory (category) {
+    this.categories.push(category)
+  }
+}
+
+// instantiate a new instance of the game
+var game = new Game()
+
+// instantiate some categories
+var addition = new Category()
+
+// add questions
+addition.addQuestion(new Question('What is 1 + 2', 200, '3'))
+addition.addQuestion(new Question('What is 55 + 17', 400, '72'))
+addition.addQuestion(new Question('What is 117 + -32', 800, '85'))
+addition.addQuestion(new Question('What is -51 + 2', 1600, '-49'))
+
+// add 
+game.addCategory(addition)
+console.log(game)
+
 var questions = {
   1 : {
     'name': 'Addition',
