@@ -1,5 +1,8 @@
 'use strict'
 
+var score = 0
+
+// is there a way to extract a few objects out of this and compose them together?
 var questions = {
   1 : {
     'name': 'Addition',
@@ -7,46 +10,22 @@ var questions = {
       1 : {
         'text'    : 'What is 1 + 2?',
         'value'   : 200,
-        'correct' : 2,
-        'choices' : [
-          '4',
-          '6',
-          '3',
-          '1'
-        ]
+        'answer' : '3'
       },
       2 : {
         'text'    : 'What is 55 + 17?',
         'value'   : 400,
-        'correct' : 2,
-        'choices' : [
-          '78',
-          '89',
-          '72',
-          '62'
-        ]
+        'answer' : '72'
       },
       3 : {
         'text'    : 'What is 117 + -32?',
         'value'   : 800,
-        'correct' : 1,
-        'choices' : [
-          '95',
-          '85',
-          '97',
-          '84'
-        ]
+        'answer' : '85'
       },
       4 : {
         'text'    : 'What is -51 + 2?',
         'value'   : 1600,
-        'correct' : 1,
-        'choices' : [
-          '48',
-          '-49',
-          '54',
-          '-53'
-        ]
+        'answer' : '-49'
       }
     }
   },
@@ -56,46 +35,22 @@ var questions = {
       1 : {
         'text'    : 'What is 1 + 2?',
         'value'   : 200,
-        'correct' : 2,
-        'choices' : [
-          '4',
-          '6',
-          '3',
-          '1'
-        ]
+        'answer' : '3'
       },
       2 : {
         'text'    : 'What is 55 + 17?',
         'value'   : 400,
-        'correct' : 2,
-        'choices' : [
-          '78',
-          '89',
-          '72',
-          '62'
-        ]
+        'answer' : '72'
       },
       3 : {
         'text'    : 'What is 117 + -32?',
         'value'   : 800,
-        'correct' : 1,
-        'choices' : [
-          '95',
-          '85',
-          '97',
-          '84'
-        ]
+        'answer' : '85'
       },
       4 : {
         'text'    : 'What is -51 + 2?',
         'value'   : 1600,
-        'correct' : 1,
-        'choices' : [
-          '48',
-          '-49',
-          '54',
-          '-53'
-        ]
+        'answer' : '-49'
       }
     }
   },
@@ -105,46 +60,22 @@ var questions = {
       1 : {
         'text'    : 'What is 1 + 2?',
         'value'   : 200,
-        'correct' : 2,
-        'choices' : [
-          '4',
-          '6',
-          '3',
-          '1'
-        ]
+        'answer' : '3'
       },
       2 : {
         'text'    : 'What is 55 + 17?',
         'value'   : 400,
-        'correct' : 2,
-        'choices' : [
-          '78',
-          '89',
-          '72',
-          '62'
-        ]
+        'answer' : '72'
       },
       3 : {
         'text'    : 'What is 117 + -32?',
         'value'   : 800,
-        'correct' : 1,
-        'choices' : [
-          '95',
-          '85',
-          '97',
-          '84'
-        ]
+        'answer' : '85'
       },
       4 : {
         'text'    : 'What is -51 + 2?',
         'value'   : 1600,
-        'correct' : 1,
-        'choices' : [
-          '48',
-          '-49',
-          '54',
-          '-53'
-        ]
+        'answer' : '-49'
       }
     }
   },
@@ -152,48 +83,24 @@ var questions = {
     'name': 'Division',
     'questions': {
       1 : {
-        'text'    : 'What is 1 + 2?',
+        'text'    : 'What is 6 / 3?',
         'value'   : 200,
-        'correct' : 2,
-        'choices' : [
-          '4',
-          '6',
-          '3',
-          '1'
-        ]
+        'answer' : '2'
       },
       2 : {
-        'text'    : 'What is 55 + 17?',
+        'text'    : 'What is 450 / 5',
         'value'   : 400,
-        'correct' : 2,
-        'choices' : [
-          '78',
-          '89',
-          '72',
-          '62'
-        ]
+        'answer' : '90'
       },
       3 : {
-        'text'    : 'What is 117 + -32?',
+        'text'    : 'What is 1000 / -10?',
         'value'   : 800,
-        'correct' : 1,
-        'choices' : [
-          '95',
-          '85',
-          '97',
-          '84'
-        ]
+        'answer' : '-100'
       },
       4 : {
-        'text'    : 'What is -51 + 2?',
+        'text'    : 'What is -51 / 17',
         'value'   : 1600,
-        'correct' : 1,
-        'choices' : [
-          '48',
-          '-49',
-          '54',
-          '-53'
-        ]
+        'answer' : '-3'
       }
     }
   },
@@ -205,25 +112,30 @@ var questions = {
 var cards = document.querySelectorAll('.card')
 var categories = document.querySelectorAll('.category')
 
-console.log(Object.keys(questions).length)
-
 // set up categories
 for (var i = 0; i < Object.keys(questions).length; i++) {
   categories[i].textContent = questions[i + 1].name
+}
+
+function updateScore () {
+  document.querySelector('#score').textContent = `$${score}`
 }
 
 // set up event listeners for question cards
 function askQuestion(event) {
   var questionObject = questions[this.dataset.cat].questions[this.dataset.card]
   var question = questionObject.text
-  var answer = questionObject.choices[questionObject.correct]
-  var reply = prompt(question)
+  var answer = questionObject.answer
+  var reply = prompt(`${question}:`)
   if (answer == reply) {
+    score += questionObject.value
     this.classList.add('correct')
   } else {
+    score -= questionObject.value
     this.classList.add('incorrect')
   }
   this.removeEventListener('click', askQuestion, false)
+  updateScore()
 }
 
 // apply event listener to each question card

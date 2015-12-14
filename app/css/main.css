@@ -40,7 +40,7 @@ body {
   border-radius: 5px;
   color: #fff;
   margin-top: 1em;
-  padding: 2em 0;
+  padding: 1em 0;
   text-align: center; }
 
 .incorrect {
@@ -48,3 +48,30 @@ body {
 
 .correct {
   background: #A1D490; }
+
+header {
+  background: #90C3D4;
+  border-radius: 5px;
+  color: white;
+  margin-top: 1em;
+  padding: 1em 0;
+  text-align: center;
+  overflow: auto; }
+
+header h1 {
+  float: left;
+  font-size: 2em;
+  font-weight: normal;
+  margin: 1em;
+  padding: 0; }
+
+header h2 {
+  float: right;
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 3em;
+  margin: 1em;
+  padding: 0; }
+
+main {
+  clear: both; }
