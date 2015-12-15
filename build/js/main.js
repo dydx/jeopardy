@@ -2,18 +2,13 @@
 
 var score = 0
 
-// is there a way to extract a few objects out of this and compose them together?
-// also, auto incrementing these fields?
-
+// not really sure what to designate these as. They're "classes", but they're behaving
+// more like value objects with logic. At any rate, they are SO much more testable
 class Question {
   constructor (text, value, answer) {
     this.text = text
     this.value = value
     this.answer = answer
-  }
-
-  checkAnswer(answer) {
-    return answer == this.answer
   }
 }
 
@@ -25,35 +20,89 @@ class Category {
 
   addQuestion (question) {
     this.questions.push(question)
+    return this
   }
 }
 
 class Game {
   constructor () {
+    this.score = 0
     this.categories = []
   }
 
   addCategory (category) {
     this.categories.push(category)
+    return this
+  }
+
+  getQuestion (category, question) {
+    return this.categories[category].questions[question]
+  }
+
+  updateScore (value) {
+    this.score += value
   }
 }
 
-// instantiate a new instance of the game
-var game = new Game()
-
 // instantiate some categories
-var addition = new Category()
+var addition = new Category('Addition')
+var subtraction = new Category('Subtraction')
+var multiplication = new Category('Multiplication')
+var division = new Category('Division')
 
 // add questions
-addition.addQuestion(new Question('What is 1 + 2', 200, '3'))
-addition.addQuestion(new Question('What is 55 + 17', 400, '72'))
-addition.addQuestion(new Question('What is 117 + -32', 800, '85'))
-addition.addQuestion(new Question('What is -51 + 2', 1600, '-49'))
+addition
+  .addQuestion(new Question('What is 1 + 2', 200, '3'))
+  .addQuestion(new Question('What is 55 + 17', 400, '72'))
+  .addQuestion(new Question('What is 117 + -32', 800, '85'))
+  .addQuestion(new Question('What is -51 + 2', 1600, '-49'))
 
-// add 
-game.addCategory(addition)
+subtraction
+  .addQuestion(new Question('What is 1 + 2', 200, '3'))
+  .addQuestion(new Question('What is 55 + 17', 400, '72'))
+  .addQuestion(new Question('What is 117 + -32', 800, '85'))
+  .addQuestion(new Question('What is -51 + 2', 1600, '-49'))
+
+multiplication
+  .addQuestion(new Question('What is 1 + 2', 200, '3'))
+  .addQuestion(new Question('What is 55 + 17', 400, '72'))
+  .addQuestion(new Question('What is 117 + -32', 800, '85'))
+  .addQuestion(new Question('What is -51 + 2', 1600, '-49'))
+
+division
+  .addQuestion(new Question('What is 1 + 2', 200, '3'))
+  .addQuestion(new Question('What is 55 + 17', 400, '72'))
+  .addQuestion(new Question('What is 117 + -32', 800, '85'))
+  .addQuestion(new Question('What is -51 + 2', 1600, '-49'))
+
+// instantiate a `game` object and add our categories / questions to it
+var game = new Game()
+
+game
+  .addCategory(addition)
+  .addCategory(subtraction)
+  .addCategory(multiplication)
+  .addCategory(division)
+
 console.log(game)
 
+var question = game.getQuestion(0, 2)
+if (question.answer == '84') {
+  game.updateScore(question.value)
+} else {
+  game.updateScore(-question.value)
+}
+
+console.log(game)
+
+game.categories.forEach(function (category) {
+  console.log(category.name)
+  category.questions.forEach(function (question) {
+    console.log(question.text)
+  })
+})
+
+// this shit is going BYEBYE
 var questions = {
   1 : {
     'name': 'Addition',
