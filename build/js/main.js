@@ -1,7 +1,5 @@
 'use strict'
 
-var score = 0
-
 // not really sure what to designate these as. They're "classes", but they're behaving
 // more like value objects with logic. At any rate, they are SO much more testable
 class Question {
@@ -84,17 +82,27 @@ game
   .addCategory(multiplication)
   .addCategory(division)
 
+// I should be taken out back and shot for this... but I love it..
+function render (game) {
+  return game.categories.map(function (category, catIndex) {
+    return `
+    <section class="column">
+      <div class="category" data-cat="${catIndex}">${category.name}</div>
+        ${category.questions.map(function (question, quesIndex) {
+          return `<div class="card" data-cat="${catIndex}" data-card="${quesIndex}">${question.value}</div>`
+        }).join('')}
+    </section>`
+  }).join('')
+}
+
+var board = render(game)
+document.querySelector('main').innerHTML = board
+
 // select all of our question cards
 var cards = document.querySelectorAll('.card')
 // select all of our category titles
 var categories = document.querySelectorAll('.category')
 
-// this is the event handler for when a question card gets clicked.
-// it handles prompting the user for an answer as well as updating
-// the users score, AS WELL as updating the css class of the card
-//
-// might want to refactor this at some point, but its written fairly
-// declaritively, so I think I kinda like it
 function triggerQuestionPrompt (event) {
   var question = game.getQuestion(this.dataset.cat, this.dataset.card)
   var reply = prompt(question.text)

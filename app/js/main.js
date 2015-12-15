@@ -1,8 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict'
 
-var score = 0
-
 // not really sure what to designate these as. They're "classes", but they're behaving
 // more like value objects with logic. At any rate, they are SO much more testable
 class Question {
@@ -85,7 +83,25 @@ game
   .addCategory(multiplication)
   .addCategory(division)
 
+// I should be taken out back and shot for this... but I love it..
+function render (game) {
+  return game.categories.map(function (category, catIndex) {
+    return `
+    <section class="column">
+      <div class="category" data-cat="${catIndex}">${category.name}</div>
+        ${category.questions.map(function (question, quesIndex) {
+          return `<div class="card" data-cat="${catIndex}" data-card="${quesIndex}">${question.value}</div>`
+        }).join('')}
+    </section>`
+  }).join('')
+}
+
+var board = render(game)
+document.querySelector('main').innerHTML = board
+
+// select all of our question cards
 var cards = document.querySelectorAll('.card')
+// select all of our category titles
 var categories = document.querySelectorAll('.category')
 
 function triggerQuestionPrompt (event) {
