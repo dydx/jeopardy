@@ -83,7 +83,12 @@ game
   .addCategory(multiplication)
   .addCategory(division)
 
+// this could take the element name/id as a parameter (or maybe the `this` of it), and append everything
+// to it programmatically using the correct API for creating DOM nodes and Text Nodes witin them. That
+// might inspire less eye bleeding
+
 // I should be taken out back and shot for this... but I love it..
+// this really needs to be refactored into something nicer to look at..
 function render (game) {
   return game.categories.map(function (category, catIndex) {
     return `
@@ -97,12 +102,11 @@ function render (game) {
 }
 
 var board = render(game)
+// crimes against humanity
 document.querySelector('main').innerHTML = board
 
 // select all of our question cards
 var cards = document.querySelectorAll('.card')
-// select all of our category titles
-var categories = document.querySelectorAll('.category')
 
 function triggerQuestionPrompt (event) {
   var question = game.getQuestion(this.dataset.cat, this.dataset.card)
@@ -120,7 +124,6 @@ function triggerQuestionPrompt (event) {
 
 // apply event listener to each question card
 for (var i = 0; i < cards.length; i++) {
-  // cards[i].addEventListener('click', askQuestion)
   cards[i].addEventListener('click', triggerQuestionPrompt)
 }
 

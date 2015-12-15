@@ -19,8 +19,6 @@
   "dependencies": {
     "gulp": "^3.9.0",
     "gulp-sass": "^2.1.1",
-    "jquery": "^2.1.4",
-    "lovefield": "^2.1.2",
     "node-bourbon": "^4.2.3",
     "node-neat": "^1.7.2"
   }
