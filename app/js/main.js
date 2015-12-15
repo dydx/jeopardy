@@ -1,18 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict'
-
-// not really sure what to designate these as. They're "classes", but they're behaving
-// more like value objects with logic. At any rate, they are SO much more testable
-class Question {
-  constructor (text, value, answer) {
-    this.text = text
-    this.value = value
-    this.answer = answer
-  }
-}
-
-class Category {
-  constructor(name) {
+module.exports = class {
+  constructor (name) {
     this.name = name
     this.questions = []
   }
@@ -23,7 +12,9 @@ class Category {
   }
 }
 
-class Game {
+},{}],2:[function(require,module,exports){
+'use strict'
+module.exports = class {
   constructor () {
     this.score = 0
     this.categories = []
@@ -42,6 +33,15 @@ class Game {
     this.score += value
   }
 }
+
+},{}],3:[function(require,module,exports){
+'use strict'
+
+// not really sure what to designate these as. They're "classes", but they're behaving
+// more like value objects with logic. At any rate, they are SO much more testable
+var Question = require('./question')
+var Category = require('./category')
+var Game = require('./game')
 
 // instantiate some categories
 var addition = new Category('Addition')
@@ -129,4 +129,14 @@ for (var i = 0; i < cards.length; i++) {
 
 
 
-},{}]},{},[1]);
+},{"./category":1,"./game":2,"./question":4}],4:[function(require,module,exports){
+'use strict'
+module.exports = class {
+  constructor (text, value, answer) {
+    this.text = text
+    this.value = value
+    this.answer = answer
+  }
+}
+
+},{}]},{},[3]);

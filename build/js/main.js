@@ -1,46 +1,8 @@
 'use strict'
 
-// not really sure what to designate these as. They're "classes", but they're behaving
-// more like value objects with logic. At any rate, they are SO much more testable
-class Question {
-  constructor (text, value, answer) {
-    this.text = text
-    this.value = value
-    this.answer = answer
-  }
-}
-
-class Category {
-  constructor(name) {
-    this.name = name
-    this.questions = []
-  }
-
-  addQuestion (question) {
-    this.questions.push(question)
-    return this
-  }
-}
-
-class Game {
-  constructor () {
-    this.score = 0
-    this.categories = []
-  }
-
-  addCategory (category) {
-    this.categories.push(category)
-    return this
-  }
-
-  getQuestion (category, question) {
-    return this.categories[category].questions[question]
-  }
-
-  updateScore (value) {
-    this.score += value
-  }
-}
+var Question = require('./question')
+var Category = require('./category')
+var Game = require('./game')
 
 // instantiate some categories
 var addition = new Category('Addition')
