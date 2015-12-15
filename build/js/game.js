@@ -6,6 +6,9 @@ module.exports = class {
   }
 
   addCategory (category) {
+    if (typeof category !== 'object') {
+      throw new Error('categories must be Category objects')
+    }
     this.categories.push(category)
     return this
   }
