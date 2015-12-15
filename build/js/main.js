@@ -44,12 +44,6 @@ game
   .addCategory(multiplication)
   .addCategory(division)
 
-// this could take the element name/id as a parameter (or maybe the `this` of it), and append everything
-// to it programmatically using the correct API for creating DOM nodes and Text Nodes witin them. That
-// might inspire less eye bleeding
-
-// I should be taken out back and shot for this... but I love it..
-// this really needs to be refactored into something nicer to look at..
 function render (game) {
   return game.categories.map(function (category, catIndex) {
     return `
@@ -87,5 +81,3 @@ function triggerQuestionPrompt (event) {
 for (var i = 0; i < cards.length; i++) {
   cards[i].addEventListener('click', triggerQuestionPrompt)
 }
-
-

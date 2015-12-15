@@ -37,8 +37,6 @@ module.exports = class {
 },{}],3:[function(require,module,exports){
 'use strict'
 
-// not really sure what to designate these as. They're "classes", but they're behaving
-// more like value objects with logic. At any rate, they are SO much more testable
 var Question = require('./question')
 var Category = require('./category')
 var Game = require('./game')
@@ -83,12 +81,6 @@ game
   .addCategory(multiplication)
   .addCategory(division)
 
-// this could take the element name/id as a parameter (or maybe the `this` of it), and append everything
-// to it programmatically using the correct API for creating DOM nodes and Text Nodes witin them. That
-// might inspire less eye bleeding
-
-// I should be taken out back and shot for this... but I love it..
-// this really needs to be refactored into something nicer to look at..
 function render (game) {
   return game.categories.map(function (category, catIndex) {
     return `
@@ -127,12 +119,18 @@ for (var i = 0; i < cards.length; i++) {
   cards[i].addEventListener('click', triggerQuestionPrompt)
 }
 
-
-
 },{"./category":1,"./game":2,"./question":4}],4:[function(require,module,exports){
 'use strict'
 module.exports = class {
   constructor (text, value, answer) {
+    if(typeof text !== 'string') {
+      throw new Error('question text must be a string')
+    } else if (typeof value !== 'number') {
+      throw new Error('value must be an integer')
+    } else if (typeof answer !== 'string') {
+      throw new Error('answer text must be a string')
+    }
+
     this.text = text
     this.value = value
     this.answer = answer
