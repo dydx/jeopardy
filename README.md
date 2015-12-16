@@ -67,7 +67,7 @@ Testing
 
 I chose to focus a lot of my attention on the backend of the application. In doing so, I decided to implement unit tests for the various classes and objects of my system
 
-The test suite I chose is called Jasmine, and makes writing tests fairly simple.
+The test suite I chose is called [Jasmine](https://github.com/jasmine/jasmine), and makes writing tests fairly simple.
 
 An example of a test is as follows:
 
@@ -93,7 +93,7 @@ Deployments
 My deployments are being handled by GitHub Pages.
 
 ### Travis CI
-I didn't want to be tasked with manually merging `master` into `gh-pages` and running deployments my self, as I was working on a feature branch / Git Flow style of development, so I decided to take advantage of Travis CI
+I didn't want to be tasked with manually merging `master` into `gh-pages` and running deployments my self, as I was working on a feature branch / Git Flow style of development, so I decided to take advantage of [Travis CI](https://travis-ci.org)
 
 Travis CI is a testing-as-a-service platform that will run tests based off of Git hooks, and then allows you to perform actions at various stages of testing.
 
@@ -106,7 +106,7 @@ This allows me to continuously deliver code that always passes tests and is work
 Interesting Features
 -------------
 ### ECMAScript 20015 (ES6)
-I made **HEAVY** use of ES6 features such as the new Class syntax and template strings.
+I made **HEAVY** use of ES6 features such as the new [Class syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) and [template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings).
 
 ### Fully dynamic rendering
 The base HTML is pretty bare-- I'm building the whole board with a `render` function that accepts the main `Game` object and iterates over it to produce the appropriate HTML and event listeners
