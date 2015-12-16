@@ -4,10 +4,19 @@ set -e
 
 echo -e "Deploying to production... "
 
-mkdir out
-cp index.html out/index.html
-cp -r build out/build
-cd out
+# make app folder
+# move index.html into app folder
+# run npm build to create app/js and app/css
+# cd into app
+# create git repo
+# add everything in app
+# commit with build ID
+# force push
+
+mkdir app
+mv index.html app/index.html
+npm build # this compiles the contents of build into app
+cd app
 git init
 
 git config user.name "Travis CI"
