@@ -3,3 +3,8 @@ node_js:
   - "5.0"
 before_script:
   - "npm i -g jasmine-node"
+secure: "t4ThR/Up0+dNiogKTv6+jvERN8bcX8TNsJ37hHbvnnjVJoYdGkT9JqlLEdggIZ5bhmMiMOLNYZ7UJouz2RDiQrr8HGKw9aEbsanm30WfnTrHGKl9CMDhQq9UGJznvo5MeIUzB1l7Y9n77ebDTrjJDpUZi3P9ovZ5TTs+rY7EbAcdmMTQhs7ly6BKx3Dxr6OebEw/BDIN7mwb3TlN9e7TFcbNyWyqSOTFjh7z1vJ/ImhYCbTr9jnfXkxjBpVwsdc87YUo9adj5BaDywWJhJ5I0z9GRQOQ2Fgz3Dx36ioGEYEiCtOUy2gyX15vrQReoErkZ5UvMnvltrEfHyTZNbgCQTJvK28NxzTla7axuoWNhsNT1yoLBrMTcQ2NUyBYA7hZY3I5uFPMpwL0J/QNpqgVLfYvYtH6Y2tRJ/hMeGxk8dfsMeDCVb9Lp1qouS3LSsotUEr+wuSAf1hFe1TB11aGvjKarGOd30I4sNStk5247K3EJFPbSDO+7CVcM4CS523V9fG2r0oBL2p1hmBC7Lo7At8GW20w/RxPirsaKmOPBAdONF/WNbByWigpafCtIuCdfwF0jtcjejtv9VNxO/5f8ZpNHqJ16Za3qkua0nNCWPvRmJJ1/RAQ0ol5uHmyGG8z7o1WSKttIDjrc+ULQ7q7M0K2LO9cvnE67D4weA0kaq8="
+after_success:
+  - "curl -o /tmp/travis-automerge https://raw.githubusercontent.com/cdown/travis-automerge/master/travis-automerge"
+  - "chmod a+x /tmp/travis-automerge"
+  - "BRANCHES_TO_MERGE_REGEX='master' BRANCH_TO_MERGE_INTO=gh-pages GITHUB_REPO=dydx/jeopardy /tmp/travis-automerge"
