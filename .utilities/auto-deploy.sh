@@ -1,15 +1,24 @@
 #!/bin/bash
-echo -e "Deploying to Production...\n"
 
-cd $HOME
-git config --global user.email "travis@travis-ci.org"
-git config --global user.name "travis-ci"
-git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/dydx/jeopardy gh-pages > /dev/null
+set -e
 
-git add -f .
-git commit -m "Latest production deploy from $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
-git checkout gh-pages
-git merge master
-git push -fq origin gh-pages > /dev/null
+echo -e "Deploying to production... "
 
-echo -e "Production is deployed"
+rm -rf out || exit 0;
+mkdir out;
+
+# runs npm build and populates ./app with index.html, js, and css
+./compile.sh
+
+cd out
+git init
+
+git config user.name "Travis CI"
+git config user.email "joshua.sandlin@gmail.com"
+
+git add .
+git commit -m "Deploy to GitHub Pages"
+
+git push --forge --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null 2>&1
+
+echo -e "Production app is deployed"
