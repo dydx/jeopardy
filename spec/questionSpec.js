@@ -21,20 +21,8 @@ describe('Questions Class', function () {
       }).toThrow()
       done()
     })
-  })
 
-  describe('.text', function () {
-    it('has a text value', function (done) {
-      let text = 'Does this work?'
-      let value = 200
-      let answer = 'yes'
-      let question = new Question(text, value, answer)
-      expect(question.text).toEqual(jasmine.any(String))
-      expect(question.text).toEqual(text)
-      done()
-    })
-
-    it('rejects non-string values', function (done) {
+    it('rejects non-string values for .text', function (done) {
       let text = 331337
       let value = 200
       let answer = 'yes'
@@ -43,20 +31,8 @@ describe('Questions Class', function () {
       }).toThrow()
       done()
     })
-  })
 
-  describe('.value', function () {
-    it('has a text value', function (done) {
-      let text = 'Does this work?'
-      let value = 200
-      let answer = 'yes'
-      let question = new Question(text, value, answer)
-      expect(question.value).toEqual(jasmine.any(Number))
-      expect(question.value).toEqual(value)
-      done()
-    })
-
-    it('rejects non-integer values', function (done) {
+    it('rejects non-integer values for .value', function (done) {
       let text = 'Does this work?'
       let value = '200'
       let answer = 'yes'
@@ -65,20 +41,8 @@ describe('Questions Class', function () {
       }).toThrow()
       done()
     })
-  })
 
-  describe('.answer', function () {
-    it('has a text value', function (done) {
-      let text = 'Does this work?'
-      let value = 200
-      let answer = 'yes'
-      let question = new Question(text, value, answer)
-      expect(question.answer).toEqual(jasmine.any(String))
-      expect(question.answer).toEqual(answer)
-      done()
-    })
-
-    it('rejects non-string values', function (done) {
+    it('rejects non-string values for .answer', function (done) {
       let text = 'Does this work?'
       let value = 200
       let answer = true

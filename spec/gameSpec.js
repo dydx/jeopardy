@@ -35,4 +35,43 @@ describe('Game Class', function () {
       done()
     })
   })
+
+  describe('#getQuestion', function () {
+    it('returns the correct question', function (done) {
+      let game = new Game()
+      let category = new Category('Testing')
+      let question = new Question('a', 1, 'b')
+      game.addCategory(category.addQuestion(question))
+      expect(game.getQuestion(0, 0)).toEqual(question)
+      done()
+    })
+
+    it('rejects invalid inputs', function (done) {
+      let game = new Game()
+      let category = new Category('Testing')
+      let question = new Question('a', 1, 'b')
+      game.addCategory(category.addQuestion(question))
+      expect(function () {
+        game.getQuestion('0', 0)
+      }).toThrow()
+
+      expect(function () {
+        game.getQuestion(0, '0')
+      }).toThrow()
+
+      expect(function () {
+        game.getQuestion('0')
+      }).toThrow()
+      done()
+    })
+  })
+
+  describe('#updateScore', function () {
+    it('updates the score', function (done) {
+      let game = new Game()
+      game.updateScore(1)
+      expect(game.score).toEqual(1)
+      done()
+    })
+  })
 })

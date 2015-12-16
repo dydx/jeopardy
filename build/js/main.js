@@ -35,7 +35,7 @@ division
   .addQuestion(new Question('What is 117 + -32', 800, '85'))
   .addQuestion(new Question('What is -51 + 2', 1600, '-49'))
 
-// instantiate a `game` object and add our categories / questions to it
+// just checking to see if this shows up after building
 var game = new Game()
 
 game
@@ -64,7 +64,9 @@ document.querySelector('main').innerHTML = board
 var cards = document.querySelectorAll('.card')
 
 function triggerQuestionPrompt (event) {
-  var question = game.getQuestion(this.dataset.cat, this.dataset.card)
+  var categoryIdx = Number(this.dataset.cat)
+  var questionIdx = Number(this.dataset.card)
+  var question = game.getQuestion(categoryIdx, questionIdx)
   var reply = prompt(question.text)
   if (reply == question.answer) {
     game.updateScore(question.value)

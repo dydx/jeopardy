@@ -36,7 +36,7 @@ describe('Categories Class', function () {
     })
   })
 
-  describe('.addQuestion', function () {
+  describe('#addQuestion', function () {
     it('starts with an empty questions array', function (done) {
       let name = 'Testing'
       let category = new Category(name)
