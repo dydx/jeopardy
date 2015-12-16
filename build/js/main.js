@@ -35,7 +35,7 @@ division
   .addQuestion(new Question('What is 117 + -32', 800, '85'))
   .addQuestion(new Question('What is -51 + 2', 1600, '-49'))
 
-// just checking to see if this shows up after building
+// Does this show up in my automated deployments?
 var game = new Game()
 
 game
