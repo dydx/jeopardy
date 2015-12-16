@@ -44,6 +44,7 @@ game
   .addCategory(multiplication)
   .addCategory(division)
 
+// I'd like to refactor this into a better sort of thing
 function render (game) {
   return game.categories.map(function (category, catIndex) {
     return `
