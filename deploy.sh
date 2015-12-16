@@ -4,19 +4,12 @@ set -e
 
 echo -e "Deploying to production... "
 
-# make app folder
-# move index.html into app folder
-# run npm build to create app/js and app/css
-# cd into app
-# create git repo
-# add everything in app
-# commit with build ID
-# force push
-
 echo -e " -> creating app directories"
 echo -e " -> compiling javascript and sass into app"
-gulp
+gulp # this generates app/js and app/css
 mv index.html app/index.html
+
+rev=$(git rev-parse --short HEAD)
 
 echo -e " -> setting up deploy repo"
 cd app
@@ -31,6 +24,15 @@ echo -e " -> committing app deployment"
 git commit -m "Deploy to GitHub Pages" -a
 
 echo -e " -> pushing app deployment"
-git push --force "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null 2>&1
+git remote add upstream "https://$GH_TOKEN@github.com/dydx/jeopardy.git"
+git fetch upstream
+git reset upstream/gh-pages
+
+echo -e " -> sprinkling on magic dust"
+touch .
+
+git add -A .
+git commit -m "GitHub Pages deployed on ${rev}" -a
+git push -q upstream HEAD:gh-pages
 
 echo -e "Production app is deployed (hopefully!)"

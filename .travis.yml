@@ -1,7 +1,10 @@
 language: node_js
 node_js:
-  - "5.0"
+- '5.0'
 before_script:
-  - "npm i -g jasmine-node"
+- npm i -g jasmine-node
 after_success:
-  - ./deploy.sh
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash ./deploy.sh
+env:
+  global:
+    secure: Ts/asHASnV+nVtEkT8HhTGu2WLiBkYmJSo1XFNlY4vdsG+uglT89H5h0+V/h47kCieKGAiCc29QxerD0tCewBgxYMq9ipohvc1G1g+ua3YYT0nxGfaxXVbvViMWExP59M3C+HSneaJHX0bjCcslgerbNj0gMyrU9+CIy3rPJEvtQHAw4C20t1nxELgSPijq3zLeQfvJ/VxhVkw3WsgHDJ4jhk08OOBAlkZ8lXl0qC6fm6SJufcUzPjJTrSvMtnt01fTbXeEXzd71AJ7+9GF1ccR2o4dCx14PfFWqHhdIy05ZrsXg9WfvN+d0eZ6qs55AH4AaBQyvEjeSqtgEo3LKX3sDFTFS6yHv77pUz07xnmP80hEbdMODIlheA7pxQY707Eh9IP/H7BhD81x1eSlYqGBAGPD8ro5uceyXckxt4BO0GUcrihxldVd9VvjL/yhF2FJiqrDBRoOu4E6sVmT+KDNdiNjlbB4YItEx/OjlUIod/zBHLTT6H1kWNyYevPbJ7kaJrlStozr4Ld/SBnHwjwipCeTtQmtTdiZvE+3Ef3LlHRaPUqKOdG8eiSJ7HGPWRG04deZg8Zwm8fS+u2NN3EHCPe/RSESoYnZ1jy2HIkMHSqSVHIydsjHKIlaO2wsvX1BsCVuk7HaKXStKSfF24BZWNqNkZdvEw8WS8Cc6/OU=
