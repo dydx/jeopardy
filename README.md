@@ -153,6 +153,15 @@ I made **HEAVY** use of ES6 features such as the new [Class syntax](https://deve
 ### Fully dynamic rendering
 The base HTML is pretty bare-- I'm building the whole board with a `render` function that accepts the main `Game` object and iterates over it to produce the appropriate HTML and event listeners
 
+### data-* attributes
+The "coordinates" of the categories and questions are stored as custom data
+attributes on the question box `div`s.
+
+> **Example:**
+> ```
+> <div class="card" data-cat="0" data-card="1">$400</div>
+> ```
+
 ----------
 Challenges Faced
 -------------
