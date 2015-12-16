@@ -20,7 +20,7 @@ echo -e " -> copying index.html into app"
 mv index.html app/index.html
 
 echo -e " -> compiling javascript and sass into app"
-npm build # this compiles the contents of build into app
+gulp
 
 echo -e " -> setting up deploy repo"
 cd app
@@ -32,7 +32,7 @@ git config user.email "joshua.sandlin@gmail.com"
 git add .
 
 echo -e " -> committing app deployment"
-git commit -m "Deploy to GitHub Pages"
+git commit -m "Deploy to GitHub Pages" -a
 
 echo -e " -> pushing app deployment"
 git push --forge --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null 2>&1
