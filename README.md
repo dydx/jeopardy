@@ -176,3 +176,9 @@ this is something I'd like to be able to implement
 ### daily doubles
 This would require some hacking on the Questions object and a flag on the constructor / prototype to enable "doubling" of the score. I could manually set one, but that's no fun.
 
+----------
+
+
+My Workspace
+-------------
+![workspace](http://i.imgur.com/l3aOOOA.jpg)
