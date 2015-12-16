@@ -60,7 +60,7 @@ division
   .addQuestion(new Question('What is 117 + -32', 800, '85'))
   .addQuestion(new Question('What is -51 + 2', 1600, '-49'))
 
-// just checking to see if this shows up after building
+// Does this show up in my automated deployments?
 var game = new Game()
 
 game
@@ -69,6 +69,7 @@ game
   .addCategory(multiplication)
   .addCategory(division)
 
+// I'd like to refactor this into a better sort of thing
 function render (game) {
   return game.categories.map(function (category, catIndex) {
     return `
@@ -109,7 +110,7 @@ for (var i = 0; i < cards.length; i++) {
   cards[i].addEventListener('click', triggerQuestionPrompt)
 }
 
-}).call(this,require("b55mWE"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_e7244f00.js","/")
+}).call(this,require("b55mWE"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_98c5061c.js","/")
 },{"./category":1,"./game":3,"./question":4,"b55mWE":7,"buffer":6}],3:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
