@@ -15,8 +15,8 @@ echo -e "Deploying to production... "
 
 echo -e " -> creating app directories"
 echo -e " -> compiling javascript and sass into app"
-mv index.html app/index.html
 gulp
+mv index.html app/index.html
 
 echo -e " -> setting up deploy repo"
 cd app
