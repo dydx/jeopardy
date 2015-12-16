@@ -43,22 +43,22 @@ addition
   .addQuestion(new Question('What is -51 + 2', 1600, '-49'))
 
 subtraction
-  .addQuestion(new Question('What is 1 + 2', 200, '3'))
-  .addQuestion(new Question('What is 55 + 17', 400, '72'))
-  .addQuestion(new Question('What is 117 + -32', 800, '85'))
-  .addQuestion(new Question('What is -51 + 2', 1600, '-49'))
+  .addQuestion(new Question('What is 1 - 2', 200, '-1'))
+  .addQuestion(new Question('What is 55 - 17', 400, '38'))
+  .addQuestion(new Question('What is 117 - -32', 800, '149'))
+  .addQuestion(new Question('What is -51 - 2', 1600, '-53'))
 
 multiplication
-  .addQuestion(new Question('What is 1 + 2', 200, '3'))
-  .addQuestion(new Question('What is 55 + 17', 400, '72'))
-  .addQuestion(new Question('What is 117 + -32', 800, '85'))
-  .addQuestion(new Question('What is -51 + 2', 1600, '-49'))
+  .addQuestion(new Question('What is 1 * 2', 200, '2'))
+  .addQuestion(new Question('What is 55 * 17', 400, '935'))
+  .addQuestion(new Question('What is 117 * -32', 800, '-3744'))
+  .addQuestion(new Question('What is -51 * 2', 1600, '-102'))
 
 division
-  .addQuestion(new Question('What is 1 + 2', 200, '3'))
-  .addQuestion(new Question('What is 55 + 17', 400, '72'))
-  .addQuestion(new Question('What is 117 + -32', 800, '85'))
-  .addQuestion(new Question('What is -51 + 2', 1600, '-49'))
+  .addQuestion(new Question('What is 1 / 2', 200, '0.5'))
+  .addQuestion(new Question('What is 55 / 17', 400, '3.23'))
+  .addQuestion(new Question('What is 117 / -32', 800, '-3.65'))
+  .addQuestion(new Question('What is -51 / 2', 1600, '-25.5'))
 
 // Does this show up in my automated deployments?
 var game = new Game()
@@ -110,7 +110,7 @@ for (var i = 0; i < cards.length; i++) {
   cards[i].addEventListener('click', triggerQuestionPrompt)
 }
 
-}).call(this,require("b55mWE"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_93ce5bd7.js","/")
+}).call(this,require("b55mWE"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_61dac0.js","/")
 },{"./category":1,"./game":3,"./question":4,"b55mWE":7,"buffer":6}],3:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
