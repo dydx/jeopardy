@@ -4,12 +4,9 @@ set -e
 
 echo -e "Deploying to production... "
 
-rm -rf out || exit 0;
-mkdir out;
-
-# runs npm build and populates ./app with index.html, js, and css
-./compile.sh
-
+mkdir out
+cp index.html out/index.html
+cp -r build out/build
 cd out
 git init
 
