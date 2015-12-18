@@ -51,9 +51,9 @@ Methods on `Game` and `Category` are chainable, meaning you can run operations l
 > ```
 > var addition = new Category('addition')
 > addition
->   .addQuestion(new Question('What is 1 + 2', 200, '3')
->   .addQuestion(new Question('What is 7 + -9', 400, '-2')
->   .addQuestion(new Question('What is 117 + 32', 800, '49')
+>   .addQuestion(new Question('What is 1 + 2', 200, '3'))
+>   .addQuestion(new Question('What is 7 + -9', 400, '-2'))
+>   .addQuestion(new Question('What is 117 + 32', 800, '149'))
 > ```
 
 ----------
@@ -78,6 +78,7 @@ An example of a test is as follows:
 >      it('returns a new object', function (done) {
 >         let question = new Question('Does this work?', 200, 'Yes');
 >         expect(question).toEqual(jasmine.any(Question))
+>         done()
 >      })
 >   })
 > })
